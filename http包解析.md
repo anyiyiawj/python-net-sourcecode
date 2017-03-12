@@ -31,10 +31,10 @@ HTTPServer继承自TCPServer类，其初始化同上TCPServer类。（开启绑�
 再来整体看一下这个模块，有这几个模块有如下的类：
 ```
 服务器：
-HTTPServer
+HTTPServer#继承自TCPServer
 处理器类：
-BaseHTTPRequestHandler
-    |
+BaseHTTPRequestHandler#继承自StreamRequestHandler
+    |
     V
 SimpleHTTPRequestHandler#基础http服务
     |
