@@ -1,4 +1,4 @@
-# (5)flask源码解析之概述
+# flask源码解析之概述
 
 ---
 上文可知，我们的应用程序的入口在flask.app中Flask类中的**__call__**的地方。看到这里面就用了我们的wsgi接口（environ和start_response)，然后转调用wsgi_app函数。
