@@ -24,7 +24,7 @@ Basewsgiserver继承自HTTPServer（讲过的），其初始化采用WSGIRequest
 记得处理器最重要的是**handle**方法，我们看下WSGIRequestHandler处理器的handle，它在它的内部调用了父类的handle方法。记得吗，其父类要调用handle_one_request方法，而这个类中改写了这个方法，首先接受到最初的请求，然后解析请求（父类的方法），最后run_wsgi方法。这个run_wsgi方法，先传入环境，在最底部调用内部execute函数（传入应用）。在execute函数中第一行就是**application_iter = app(environ, start_response)**，这不就是我们要找的wsgi接口吗？然后把结果用自己的write写入就可以。
 
 这样我们就可以理解其启动的整个过程，在flask中Flask的实例作为app传入
-，最终调用app(environ, start_response)方法，那么app的**__callable__**函数就很关键。也是我们分析应用程序的突破口。（对的，我们今天看到的是如何实现wsgi接口把服务器和应用程序连接起来）
+，最终调用app(environ, start_response)方法，那么app的`__call__`函数就很关键。也是我们分析应用程序的突破口。（对的，我们今天看到的是如何实现wsgi接口把服务器和应用程序连接起来）
 
 
-我们下次就从**__callable__**入手，分析怎么把复杂的应用程序通过这个接口传递的。
+我们下次就从`__call__`入手，分析怎么把复杂的应用程序通过这个接口传递的。
